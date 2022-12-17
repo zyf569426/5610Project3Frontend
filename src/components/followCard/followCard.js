@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserProfile from "../userProfile/userProfile";
+import UserProfile from "../UserProfile/UserProfile.js";
 import "./followCard.css";
 import axios from "axios";
 import { connect } from "react-redux";

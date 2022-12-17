@@ -8,7 +8,8 @@ const Bio = (props) => {
       <img src={props.imageURL} />
       <p>{props.username}</p>
       <p>{props.bio}</p>
-      <Link to={`/profile/tweets/${props.userId}`}>View full profile</Link>
+      {/* <Link to={`/profile/tweets/${props.userId}`}>View full profile</Link> */}
+      <Link to={`/settings`}>View full profile</Link>
     </div>
   );
 };

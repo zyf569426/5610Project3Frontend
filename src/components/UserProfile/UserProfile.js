@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import HeaderImage from "../../Images/traveller.jpg";
-import "./userProfile.css";
+import "./UserProfile.css";
 
 const UserProfile = (props) => {
   const [youfollow, setYoufollow] = useState(props.you_follow);

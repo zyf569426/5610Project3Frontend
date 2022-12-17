@@ -1,10 +1,12 @@
 import React, { Component, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import "./createtweet.css";
 import * as actions from "../../store/action";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actionTypes";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
+
 
 class CreateTweet extends Component {
   state = {
@@ -38,19 +40,21 @@ class CreateTweet extends Component {
     stateKeys.map((key) => {
       formData.append(key, data[key]);
     });
-    let url = "https://tweeter-test-yin.herokuapp.com/posts/create";
+
+    // let url = "https://tweeter-test-yin.herokuapp.com/posts/create";
+    let url = "http://localhost:8000/api/tweet";
     axios({
       method: "post",
       url: url,
-      data: formData,
+      data: data,
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
         Authorization: this.props.token,
       },
     })
       .then((res) => {
         button.disabled = false;
-        this.props.navigate(`/${res.data.user.username}/${res.data.post_id}`);
+        // this.props.navigate(`/${res.data.user.username}/${res.data.post_id}`);
         this.setState({ postedTweet: true });
       })
       .catch((err) => {
@@ -105,20 +109,31 @@ class CreateTweet extends Component {
           <p className="tweetFail">An error occured.</p>
         ) : null}
         <div className="createTweet">
-          <p>Tweet something</p>
-          <div className="newtweetInput">
-            <img className="posterImage" src={this.props.imageURL} />
-            <div className="tweetbox">
-              <textarea
+          {/* <p>Tweet something</p> */}
+
+          {/* <div className="newtweetInput"> */}
+          {/* <img className="posterImage" src={this.props.imageURL} /> */}
+          {/* <div className="tweetbox"> */}
+          {/* <p>Tweet something</p> */}
+          {/* <textarea
                 placeholder="What’s happening?"
                 className="tweetBox"
                 onChange={this.handleNewTweet}
                 onKeyDown={this.handleKeyDown}
                 maxLength="250"
-              />
-              <img src={this.state.tweetimageURL} width="100%" />
-            </div>
-          </div>
+              /> */}
+
+          {/* <img src={this.state.tweetimageURL} width="100%" /> */}
+          {/* </div> */}
+          {/* </div> */}
+          <p>Tweet something</p>
+          <textarea
+            placeholder="What’s happening?"
+            className="tweetBox"
+            onChange={this.handleNewTweet}
+            onKeyDown={this.handleKeyDown}
+            maxLength="250"
+          />
           <div className="newtweetIcons">
             <label htmlFor="file-input">
               <i className="material-icons-outlined tweetImageIcon">image</i>

@@ -44,15 +44,15 @@ const ProfilePage = (props) => {
           <img src={props.imageURL} className="editProfileImage" />
         </div>
         <div className="profileDiv">
-          <p>NAME</p>
-          <p>{props.username}</p>
+          <p>USERNAME</p>
+          <p>{props.email}</p>
         </div>
         <div className="profileDiv">
-          <p>BIO</p>
-          <p>{props.bio}</p>
+          <p>JoinDate</p>
+          <p>{props.timestamp}</p>
         </div>
         <div className="profileDiv">
-          <p>PHONE</p>
+          <p>DESC</p>
           <p>{props.phone}</p>
         </div>
         <div className="profileDiv">
@@ -77,6 +77,7 @@ const mapStateToProps = (state) => {
     error: state.error,
     message: state.message,
     phone: state.phone,
+    joinDate: state.timestamp
   };
 };
 

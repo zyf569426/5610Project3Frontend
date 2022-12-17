@@ -25,14 +25,13 @@ const mapDispatchToProps = (dispatch) => {
 
 const Tweeter = (props) => {
   let location = useLocation();
-
   return (
     <Routes>
       <Route path="register" element={<Navigate to="/signup" />} />
       {
-        props.auth ? <Route path="signup" element={<Navigate to="/settings"/>} />
-        :
-        <Route path="signup" element={<SignupPage />} />
+        props.auth ? <Route path="signup" element={<Navigate to="/settings" />} />
+          :
+          <Route path="signup" element={<SignupPage />} />
 
       }
       {props.auth ? (

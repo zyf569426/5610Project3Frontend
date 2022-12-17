@@ -8,6 +8,7 @@ export const authStart = () => {
 };
 
 export const authSuccess = (res) => {
+  console.log(res.timestamp);
   return {
     type: actionTypes.AUTH_SUCCESS,
     token: res.token,
@@ -16,6 +17,7 @@ export const authSuccess = (res) => {
     username: res.username,
     bio: res.bio,
     email: res.email,
+    joinDate: res.timestamp
   };
 };
 
@@ -33,9 +35,8 @@ export const saveSuccess = (res) => {
 export const saveDetails = (details) => {
   const button = document.querySelector("#saveDetails");
   return (dispatch, getState) => {
-    let url = `https://tweeter-test-yin.herokuapp.com/${
-      getState().userId
-    }/profile`;
+    let url = `https://tweeter-test-yin.herokuapp.com/${getState().userId
+      }/profile`;
     axios
       .post(url, details, {
         headers: {
@@ -60,6 +61,20 @@ export const authFail = (error) => {
   };
 };
 
+// export const auth = (email, password, method) => {
+//   return (dispatch) => {
+//     dispatch(authStart());
+//     const authData = {
+//       email: email,
+//       password: password,
+//     };
+//     let response = { email: "abc@gmail.com", password: "123456", username: "yufan", imageURL: "https://gravatar.com/avatar/7c5673f4f01a16a452e3c14ac6a1db82?s=400&d=robohash&r=x" };
+//     // let response = { email: "abc@gmail.com", password: "123456" };
+//     dispatch(authSuccess(response));
+
+//   };
+// };
+
 export const auth = (email, password, method) => {
   return (dispatch) => {
     dispatch(authStart());
@@ -67,17 +82,19 @@ export const auth = (email, password, method) => {
       email: email,
       password: password,
     };
-    let url = "https://tweeter-test-yin.herokuapp.com/register";
+    // let url = "https://tweeter-test-yin.herokuapp.com/register";
+    let url = "http://localhost:8000/api/account/register";
     if (!method) {
-      url = "https://tweeter-test-yin.herokuapp.com/login";
+      url = "http://localhost:8000/api/account/login";
     }
     axios
       .post(url, authData)
       .then((response) => {
-        if (response.status == 400 || response.status == 500){
+        console.log(response);
+        if (response.status === 400 || response.status === 500) {
           throw response
-        } 
-        else{
+        }
+        else {
           dispatch(authSuccess(response.data));
         }
       })
@@ -89,13 +106,13 @@ export const auth = (email, password, method) => {
 
 export const postTweet = (tweet) => {
   return (dispatch, getState) => {
-    let url = "https://tweeter-test-yin.herokuapp.com/posts/create";
+    let url = "http://localhost:8000/api/tweet";
     axios({
       method: "post",
       url: url,
       data: tweet,
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
         Authorization: getState().token,
       },
     })

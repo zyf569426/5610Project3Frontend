@@ -14,12 +14,13 @@ class Tweets extends React.Component {
 
   componentDidMount() {
     const userId = this.props.params.user_id;
-    let url = `https://tweeter-test-yin.herokuapp.com/user/${userId}/posts`;
+    // let url = `https://tweeter-test-yin.herokuapp.com/user/${userId}/posts`;
+    let url = 'http://localhost:8000/api/tweet/username/leo';
     axios({
       method: "get",
       url: url,
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
         Authorization: this.props.token,
       },
     })
