@@ -7,7 +7,7 @@ import SignupPage from "./pages/auth/signup";
 import ProfilePage from "./pages/profile/profile";
 import UpdateProfilePage from "./pages/updateprofile/updateprofile";
 import { connect } from "react-redux";
-import User from "./pages/user/user";
+// import User from "./pages/user/user";
 import React from "react";
 import FullPostPage from "./pages/fullpostpage/fullpostpage";
 
@@ -59,7 +59,8 @@ const Tweeter = (props) => {
         />
       )}
       {props.auth ? (
-        <Route path="/profile" element={<User />} />
+        // <Route path="/profile" element={<User />} />
+        <Route path="/profile" />
       ) : (
         <Route
           path="/profile"
@@ -101,7 +102,8 @@ const Tweeter = (props) => {
       {props.auth ? (
         <Route
           path="/profile/:exact/:user_id"
-          element={<User />}
+          // element={<User />}
+
           key={location.key}
         />
       ) : (

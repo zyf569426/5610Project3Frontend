@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/container/container";
-import SideBar from "../../components/sidebar/sidebar.js";
+// import SideBar from "../../components/sidebar/sidebar.js";
 import HomeContainer from "../../components/homeContainer/homeContainer";
 import Header from "../../components/header/header";
 import LinksCard from "../../components/linksCard/linksCard";
@@ -11,9 +11,9 @@ const BookmarksPage = (props) => {
     <div>
       <Header />
       <Container>
-        <SideBar>
+        {/* <SideBar>
           <LinksCard />
-        </SideBar>
+        </SideBar> */}
         <HomeContainer>
           <Bookmarks />
         </HomeContainer>

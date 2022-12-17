@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../../components/container/container";
-import SideBar from "../../components/sidebar/sidebar";
+// import SideBar from "../../components/sidebar/sidebar";
 import HomeContainer from "../../components/homeContainer/homeContainer";
 import SortedTweets from "../../components/sortedtweets/sortedtweets";
 import Header from "../../components/header/header";
@@ -12,9 +12,9 @@ const FullPostPage = (props) => {
     <div>
       <Header />
       <Container>
-        <SideBar>
+        {/* <SideBar>
           <LinksCard />
-        </SideBar>
+        </SideBar> */}
         <HomeContainer>
           <FullPost />
         </HomeContainer>
